@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.textbymood</groupId>
-	<artifactId>app</artifactId>
+	<artifactId>java-spring-boot-backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>app</name>
+	<name>java-spring-boot-backend</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
