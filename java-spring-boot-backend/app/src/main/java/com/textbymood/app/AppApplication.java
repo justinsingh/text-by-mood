@@ -1,13 +1,13 @@
-package com.textbymood.textbymood;
+package com.textbymood.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TextByMoodApplication {
+public class AppApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TextByMoodApplication.class, args);
+		SpringApplication.run(AppApplication.class, args);
 	}
 
 }
