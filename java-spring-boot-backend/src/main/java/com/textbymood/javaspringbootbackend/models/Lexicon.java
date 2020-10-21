@@ -26,6 +26,10 @@ public class Lexicon {
 
     }
 
+    public Map<String, Set<String>> getVocabulary() {
+        return vocabulary;
+    }
+
     /**
      * Creates a new Lexicon object including the vocabulary contained in the given file.
      * @param wordFile A file containing words and their descriptors
