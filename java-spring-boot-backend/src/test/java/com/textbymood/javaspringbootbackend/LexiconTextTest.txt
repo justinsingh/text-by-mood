@@ -1,0 +1,5 @@
+abandon	fear	1
+abandonment	fear	1
+abacus	fear	0
+abba	positive	1
+abhorrent	positive	0
