@@ -61,18 +61,21 @@ public class Lexicon {
 
     /**
      * Add multiple words from a file to the vocabulary with assocation to their descriptors.
-     * Each line of the file must be in the format of: "[word] [descriptor]"
+     * Each line of the file must be in the format of: "[word] [descriptor] [binary 0 or 1, unassociated or associated]"
+     * Format derived from file format of the NRC Emotion Lexicon
      * @param wordFile
      * @see #addWord(String, String)
      */
     public void addWordsFromFile(File wordFile) {
         try (Stream<String> wordFileStream = Files.lines(wordFile.toPath())) {
             wordFileStream.forEach(lineOfText -> {
-                String[] lineOfTextArr = lineOfText.split(" ");
-                String word = lineOfTextArr[0];
-                String descriptor = lineOfTextArr[1];
+                String[] lineOfTextArr = lineOfText.split("\\s+");
+                if (lineOfTextArr[2].equals("1")) {
+                    String word = lineOfTextArr[0];
+                    String descriptor = lineOfTextArr[1];
 
-                addWord(word, descriptor);
+                    addWord(word, descriptor);
+                }
             });
         }
         catch (IOException e) {
