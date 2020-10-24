@@ -70,7 +70,7 @@ public class Lexicon {
         try (Stream<String> wordFileStream = Files.lines(wordFile.toPath())) {
             wordFileStream.forEach(lineOfText -> {
                 String[] lineOfTextArr = lineOfText.split("\\s+");
-                if (lineOfTextArr[2].equals("1")) {
+                if (lineOfTextArr.length >= 3 && lineOfTextArr[2].equals("1")) {
                     String word = lineOfTextArr[0];
                     String descriptor = lineOfTextArr[1];
 
