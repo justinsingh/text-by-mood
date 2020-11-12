@@ -1,7 +1,7 @@
 package com.textbymood.javaspringbootbackend.models;
 
 /**
- * TextAnalyzer.java --- A class for determining the relationship between a body of text and a lexicon.
+ * TextAnalyzer.java --- A class for processing body of texts to determine their relationship to a lexicon.
  * 
  * @author Justin Singh
  */
