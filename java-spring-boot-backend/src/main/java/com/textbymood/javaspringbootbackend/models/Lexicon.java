@@ -83,17 +83,10 @@ public class Lexicon {
      */
     public void addWordsFromFile(File wordFile) {
         try (Stream<String> wordFileStream = Files.lines(wordFile.toPath())) {
-            wordFileStream.forEach(lineOfText -> {
-                String[] lineOfTextArr = lineOfText.split("\\s+");
-                if (lineOfTextArr.length >= 3 && lineOfTextArr[2].equals("1")) {
-                    String word = lineOfTextArr[0];
-                    String descriptor = lineOfTextArr[1];
-
-                    addWord(word, descriptor);
-                }
-            });
-        }
-        catch (IOException e) {
+            wordFileStream.map(lineOfText -> lineOfText.split("\\s+"))
+                          .filter(lineOfTextArr -> lineOfTextArr.length == 3 && lineOfTextArr[2].equals("1"))
+                          .forEach(lineOfTextArr -> addWord(lineOfTextArr[0], lineOfTextArr[1])); 
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
