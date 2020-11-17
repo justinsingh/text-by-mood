@@ -9,14 +9,14 @@ import java.util.Set;
  * 
  * @author Justin Singh
  */
-public class Result {
+public class TextAnalysisResult {
     final List<String> topDescriptors;
     final Map<String, Integer> descriptorScoreMap;
-    final Map<String, Set<String>> descriptorSearchWords;
+    final Map<String, Set<String>> descriptorAssociatedWords;
 
-    public Result(List<String> topDescriptors, Map<String, Integer> descriptorScoreMap, Map<String, Set<String>> descriptorSearchWords) {
+    public TextAnalysisResult(List<String> topDescriptors, Map<String, Integer> descriptorScoreMap, Map<String, Set<String>> descriptorSearchWords) {
         this.topDescriptors = topDescriptors;
         this.descriptorScoreMap = descriptorScoreMap;
-        this.descriptorSearchWords = descriptorSearchWords;
+        this.descriptorAssociated = descriptorSearchWords;
     }
 }
