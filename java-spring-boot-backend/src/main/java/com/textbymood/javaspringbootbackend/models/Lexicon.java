@@ -55,13 +55,7 @@ public class Lexicon {
         vocabulary.putIfAbsent(descriptor, new HashSet<String>());
 
         Set<String> descriptorSet = vocabulary.get(descriptor);
-        if (descriptorSet.contains(word)) {
-            return false;
-        }
-        else {
-            descriptorSet.add(word);
-            return true;
-        }
+        return descriptorSet.add(word); 
     }
 
     /**
