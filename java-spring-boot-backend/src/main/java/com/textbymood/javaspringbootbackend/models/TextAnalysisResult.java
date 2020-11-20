@@ -12,13 +12,13 @@ import java.util.Set;
 public class TextAnalysisResult {
     final String text;
     final List<String> topDescriptors;
-    final Map<String, Integer> descriptorScoreMap;
-    final Map<String, Set<String>> descriptiveWordsMap;
+    final Map<String, Integer> descriptorToScore;
+    final Map<String, Set<String>> descriptorToSetOfWords;
 
-    public TextAnalysisResult(String text, List<String> topDescriptors, Map<String, Integer> descriptorScoreMap, Map<String, Set<String>> descriptiveWordsMap) {
+    public TextAnalysisResult(String text, List<String> topDescriptors, Map<String, Integer> descriptorToScore, Map<String, Set<String>> descriptorToSetOfWords) {
         this.text = text;
         this.topDescriptors = topDescriptors;
-        this.descriptorScoreMap = descriptorScoreMap;
-        this.descriptiveWordsMap = descriptiveWordsMap;
+        this.descriptorToScore = descriptorToScore;
+        this.descriptorToSetOfWords = descriptorToSetOfWords;
     }
 }
