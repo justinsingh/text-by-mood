@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * TextAnalyzer.java --- A class for scanning bodies of text to determine their relationships to a lexicon.
+ * TextAnalyzer.java --- A class for analyzing bodies of text to determine their relationships to a lexicon.
  * 
  * @author Justin Singh
  */
@@ -23,13 +23,13 @@ public class TextAnalyzer {
         this.lexicon = lexicon;
         this.vocabulary = lexicon.getVocabulary();
     }
-
+    
     public TextAnalysisResult analyzeText(String text) {
         String[] words = createArrayOfNonStopWords(text);
 
         Map<String, List<String>> descriptorToListOfWords = createDescriptorToListOfWordsMap(words);
         Map<String, Set<String>> descriptorToSetOfWords = createDescriptorToSetOfWordsMap(descriptorToListOfWords);
-        Map<String, Integer> descriptorToScore = createDescriptorToScoreMap(descriptorToListOfWords, words.length);
+        Map<String, Double> descriptorToScore = createDescriptorToScoreMap(descriptorToListOfWords, words.length);
         List<String> topDescriptors = createTopDescriptorsList(descriptorToScore);
         
         return new TextAnalysisResult(text, topDescriptors, descriptorToScore, descriptorToSetOfWords);
@@ -76,21 +76,21 @@ public class TextAnalyzer {
         return descriptorToSetOfWords;
     }
 
-    private Map<String, Integer> createDescriptorToScoreMap(Map<String, List<String>> descriptorToListOfWords, int numOfWords) {
-        Map<String, Integer> descriptorToScore = new HashMap<String, Integer>();
+    private Map<String, Double> createDescriptorToScoreMap(Map<String, List<String>> descriptorToListOfWords, int numOfWords) {
+        Map<String, Double> descriptorToScore = new HashMap<String, Double>();
 
         for (String descriptor: descriptorToListOfWords.keySet()) {
-            int listOfWordsLength = descriptorToListOfWords.get(descriptor).size();
+            double listOfWordsLength = descriptorToListOfWords.get(descriptor).size();
             descriptorToScore.put(descriptor, (listOfWordsLength / numOfWords) * 100);
         }
 
         return descriptorToScore;
     }
 
-    private List<String> createTopDescriptorsList(Map<String, Integer> descriptorToScore) {
-        Optional<Integer> highestDescriptorScoreOptional = descriptorToScore.values().stream()
+    private List<String> createTopDescriptorsList(Map<String, Double> descriptorToScore) {
+        Optional<Double> highestDescriptorScoreOptional = descriptorToScore.values().stream()
                                                                .max((num1, num2) -> num1.compareTo(num2));
-        int highestDescriptorScore = highestDescriptorScoreOptional.orElse(-1);
+        double highestDescriptorScore = highestDescriptorScoreOptional.orElse(-1.0);
 
         return descriptorToScore.keySet().stream()
                                 .filter(descriptor -> descriptorToScore.get(descriptor) == highestDescriptorScore)
